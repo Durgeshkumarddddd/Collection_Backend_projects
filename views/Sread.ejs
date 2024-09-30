@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-full min-h-screen bg-zinc-900">
+      <a class="text-blue-400 text-2xl mx-12 my-8 mt-8" href="/"
+        >Go to Crate posts</a>
+      <div class=" mx-10 my-8">
+        <h1 class="text-white text-3xl">All Users</h1>
+        <hr class="bg-zinc-800" />
+        <div class="flex gap-10 flex-wrap">
+        <% if(user.length>0){%> 
+          <%  user.forEach(function(user){%> 
+            <div class="user bg-zinc-600 w-[25vw] h-[35vh] my-8 overflow-hidden">
+                <div class="w-full h-[18vh] px-2 py-2 bg-zinc-300 ">
+                  <img class="w-full h-full" src="<%=user.image %>" alt="" />
+                </div>
+                <h3 class="text-2xl text-white mt-2"><%=user.name %></h3>
+                <h5 class="text-white mt-2 tracking-tighter"><%=user.email %></h5>
+                <div class="mt-3 font-semibold">
+                  <a class="text-blue-300 px-5 py-4" href="/edit/<%=user.id %>">Edit</a>
+                  <a class="text-red-300 px-5 py-4" href="/delete/<%=user.id %>">Delete</a>
+                </div>
+              </div>
+            <%})%>
+            
+            <%} %>
+         </div>
+      </div>
+    </div>
+  </body>
+</html>

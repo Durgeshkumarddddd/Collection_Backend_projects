@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-800 py-1">
+        <a  class="mt-12 bg-blue-700 px-3 py-2 mx-12 my-12" href="/logout">logout</a>
+        <h1 class="text-white m-8 text-3xl tracking-tighter">Welcome to profile page </h1>
+        <hr class="bg-zinc-700 ">
+        <div class="w-[30vw] h-50 mx-10 my-10 ">
+            <form action="/post" method="post">
+                <input class="block rounded-md px-3 py-2 mt-2 bg-zinc-600 text-white" type="text" name="title" placeholder="Title">
+                <textarea class="block rounded-md px-3 py-2 mt-2 bg-zinc-600 text-white" type="textare" name="description" placeholder="Write Description here"></textarea>
+                <input class="block rounded-md px-3 py-2 mt-2 bg-zinc-600 text-white"  type="text" name="image" placeholder="ImageUrl" >
+               <input class="block rounded-md bg-red-700 px-2 py-2 mt-2 " type="submit" value="Create Post">
+            </form>
+        </div>
+        <div class="m-8 ">
+            <h3 class="text-3xl fond-semibold text-white">All posts</h3>
+            <div class="mt-8 w-[20vw] h-[30vh] bg-zinc-600 text-white overflow-none">
+                <div><img class="bg-zinc-400 w-full h-[15vh] " src=" " alt=""></div>
+                <div class="mx-3 ">
+                    <h5> Title </h5>
+                    <h3>description here</h3>
+                </div>
+                <div>
+                    <a class="px-3" href="">❤️Like</a>
+                    <a class="text-green-400 px-3" href="/edit">Edit</a>
+                    <a class="text-red-1000 px-3" href="/delete">Delete</a></div>
+
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>
