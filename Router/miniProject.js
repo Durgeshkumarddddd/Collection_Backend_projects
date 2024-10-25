@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser');
 const { title } = require('process');
-const user = require('../models/user');
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -23,8 +22,8 @@ app.get('/register', (req, res)=>{
 })
 app.post('/register',  (req, res)=>{
     let { name , email , username , age ,password} = req.body
-    const user = userModel.findOne({email})
-    if(!user) return res.status(500).send("User is not found")
+    const User = userModel.findOne({email})
+    if(!User) return res.status(500).send("User is not found")
 
     bcrypt.genSalt(10 , function(err, salt){
         bcrypt.hash(password , salt , async function(err, hash){
@@ -37,10 +36,9 @@ app.post('/register',  (req, res)=>{
             })
             var token = jwt.sign({email : userdata}, 'shhhhh');
                 res.cookie("token",token);
-                res.send("registered");
+                res.redirect('/profile')
         })
     })
-   
 })
 app.get('/login', (req, res)=>{
    res.render('mlogin');
@@ -60,7 +58,7 @@ app.post('/login', async (req, res)=>{
 })
 app.get('/logout', (req, res)=>{
     res.cookie("token","")
-    res.redirect('/mlogin')
+    res.redirect('/login')
 })
 app.get('/profile', async (req , res)=>{
     const user = await userModel.findOne({email : req.params.email})

@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended : true}))
 app.use(express.static(path.join(__dirname , 'public')));
 
 app.get('/', (req , res)=>{
-    res.render('scrud');
+    res.render('scrud.ejs');  
 })
 
 app.get('/read', async (req, res)=>{
